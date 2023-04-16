@@ -1,3 +1,0 @@
-/media/tim/9e66fbc3-ebe8-4e78-aecc-84c52b928f58/datastructures/build/CMakeFiles/hashtable_test.dir
-/media/tim/9e66fbc3-ebe8-4e78-aecc-84c52b928f58/datastructures/build/CMakeFiles/edit_cache.dir
-/media/tim/9e66fbc3-ebe8-4e78-aecc-84c52b928f58/datastructures/build/CMakeFiles/rebuild_cache.dir
