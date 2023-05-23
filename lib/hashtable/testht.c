@@ -1,6 +1,8 @@
-#include "hashtable.h"
 #include <stdio.h>
 #include <string.h>
+
+#define HASHTABLE_IMPL
+#include "hashtable.h"
 
 #define MAX_LINES 4096
 #define FNV_PRIME 0x100000001b3
@@ -8,7 +10,7 @@
 
 uint64_t test_hash_fnv0(const char* text, size_t length) {
     uint64_t hash = 0;
-    for (int i = 0; i < length; ++i) {
+    for (uint64_t i = 0; i < length; ++i) {
         hash *= FNV_PRIME;
         hash ^= text[i];
     }
@@ -17,7 +19,7 @@ uint64_t test_hash_fnv0(const char* text, size_t length) {
 
 uint64_t test_hash_fnv1(const char* text, size_t length) {
     uint64_t hash = FNV_OFFSET;
-    for (int i = 0; i < length; ++i) {
+    for (uint64_t i = 0; i < length; ++i) {
         hash *= FNV_PRIME;
         hash ^= text[i];
     }
@@ -26,7 +28,7 @@ uint64_t test_hash_fnv1(const char* text, size_t length) {
 
 uint64_t test_hash_fnv1a(const char* text, size_t length) {
     uint64_t hash = FNV_OFFSET;
-    for (int i = 0; i < length; ++i) {
+    for (uint64_t i = 0; i < length; ++i) {
         hash ^= text[i];
         hash *= FNV_PRIME;
     }
