@@ -37,12 +37,16 @@ node* list_deserialize(const char* filename);
 #ifdef LINKED_LIST_IMPL
 
 node* node_create(size_t value) {
-    node* node = malloc(sizeof(node));
-    node->value = value;
-    return node;
+    node* n = malloc(sizeof(node));
+    n->value = value;
+    n->last = NULL;
+    n->next = NULL;
+    return n;
 }
 
 void node_free(node* __node) {
+    assert(__node);
+
     if (__node->next != NULL) {
         free(__node->next);
     }
@@ -55,6 +59,9 @@ void node_free(node* __node) {
 static node* last_node = NULL;
 
 static void __swap(size_t* l, size_t* l1) {
+    assert(l);
+    assert(l1);
+
     size_t temp = *l;
     *l = *l1;
     *l1 = temp;
@@ -93,7 +100,9 @@ static void __quicksort(node* n, node* n1) {
 }
 
 bool list_push(node* head, node* __node) {
-    assert(head != NULL);
+    assert(head);
+    assert(__node);
+
     node* current = head;
     while (current != NULL) {
         if (current->next == NULL) {
@@ -101,8 +110,9 @@ bool list_push(node* head, node* __node) {
             current->next = __node;
             last_node = __node;
             return 1;
+        } else {
+            current = current->next;
         }
-        current = current->next;
     }
     head = __node;
     return 1;
